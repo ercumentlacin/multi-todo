@@ -5,9 +5,8 @@ import { useStateValue } from "../../context/StateProvider";
 import StyledTodoAddCategory from "./styles";
 
 function TodoAddCategory({ id }) {
-  const [{ allCards, todoList, todos }, dispatch] = useStateValue(); // eslint-disable-line
-
-  const [categoryName, setCategoryName] = useState("add category"); // eslint-disable-line
+  const [{ todos }, dispatch] = useStateValue();
+  const [categoryName, setCategoryName] = useState("add category");
 
   function handleCategoryChnage(e) {
     console.log(e);
@@ -25,13 +24,14 @@ function TodoAddCategory({ id }) {
     });
   }
 
-  const todosCategoryList = todos
+  const uniqCategorys = todos.filter(
+    (value, index, array) =>
+      !index || value.categoryName !== array[index - 1].categoryName
+  );
+
+  const todosCategoryList = uniqCategorys
     .filter((value) => value.categoryId === id)
     .map((value) => <li key={uuidv4()}>{value.categoryName}</li>);
-
-  console.log("1. allCards", allCards);
-  console.log("2. todos", todos);
-  console.log("----------------------");
 
   return (
     <StyledTodoAddCategory className="flex flex-column mt-auto">

@@ -6,12 +6,7 @@ function Categorys({ categoryName }) {
     <div className="form-check">
       <label className="form-check-label" htmlFor="flexCheckDefault">
         {categoryName.toUpperCase()}
-        <input
-          className="form-check-input"
-          type="checkbox"
-          value=""
-          id="flexCheckDefault"
-        />
+        <input className="form-check-input" type="checkbox" />
       </label>
     </div>
   );
