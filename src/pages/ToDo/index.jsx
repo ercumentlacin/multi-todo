@@ -8,12 +8,14 @@ import CreateCard from "../../components/CreateCard";
 import TodoCard from "../../components/TodoCard";
 import { useStateValue } from "../../context/StateProvider";
 import CardHead from "../../components/CardHead";
+import TodoAdd from "../../components/TodoAdd";
+import TodoList from "../../components/TodoList";
 
 function ToDo() {
   const name = localStorage.getItem("name");
   const lastname = localStorage.getItem("lastname");
   // eslint-disable-next-line
-  const [{ allCards }] = useStateValue();
+  const [{ allCards, todoList }, dispatch] = useStateValue(); // eslint-disable-line
 
   const categoryIems = [
     { id: uuidv4(), categoryName: "Everything" },
@@ -24,29 +26,24 @@ function ToDo() {
     <Categorys key={id} categoryName={categoryName} />
   ));
 
-  // eslint-disable-next-line
-  // const todoCardItemsList = todoCardItems.map(() => (
-  //   <TodoCard id={uuidv4()} key={uuidv4()} />
-  // ));
-
-  const cardList = allCards.map(({ id, title, todos }) => (
+  const cardList = allCards.map(({ id, title }) => (
     <div key={id} className="card">
       <div className="card__head">
         <CardHead id={id} title={title} />
       </div>
       {/* card body */}
       <div className="card__body">
-        <form>
-          <input type="text" defaultValue="add todo" />
-          <button type="submit">add</button>
-        </form>
-        {todos.map((v) => (
-          <form v={v} key={uuidv4()}>
-            <input type="checkbox" name="" id="" />
-            <input type="text" value="add todo" />
-            <button type="submit">add</button>
-          </form>
-        ))}
+        <TodoAdd id={id} />
+        {todoList.map(({ todoName, todoId, todoUniqId }) =>
+          id === todoId ? (
+            <TodoList
+              key={uuidv4()}
+              id={uuidv4()}
+              todoUniqId={todoUniqId}
+              todoName={todoName}
+            />
+          ) : null
+        )}
       </div>
     </div>
   ));

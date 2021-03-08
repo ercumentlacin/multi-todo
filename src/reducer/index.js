@@ -1,10 +1,14 @@
-export const initialState = { todos: [], todoCardItems: [], allCards: [] };
+export const initialState = {
+  todos: [],
+  todoCardItems: [],
+  allCards: [],
+  todoList: [],
+};
 
 function reducer(state = initialState, action) {
   let index;
   let newTodos;
-  console.log("action", action);
-  console.log("state", state);
+
   switch (action.type) {
     case "ADD_CARD_ITEMS":
       return {
@@ -14,11 +18,13 @@ function reducer(state = initialState, action) {
     case "ADD_TODO":
       return {
         ...state,
-        todos: [...state.todos, action.item],
+        todoList: [...state.todoList, action.todos],
       };
     case "DELETE_TODO":
-      index = state.todos.findIndex((todosItem) => todosItem.id === action.id);
-      newTodos = [...state.todos];
+      index = state.todoList.findIndex(
+        (todosItem) => todosItem.todoUniqId === action.id
+      );
+      newTodos = [...state.todoList];
 
       if (index >= 0) {
         newTodos.splice(index, 1);
@@ -29,7 +35,7 @@ function reducer(state = initialState, action) {
       }
       return {
         ...state,
-        todos: newTodos,
+        todoList: newTodos,
       };
     default:
       return state;

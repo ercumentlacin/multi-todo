@@ -16,7 +16,6 @@ function CreateCard() {
       },
     });
   };
-  console.log("allCards", allCards);
   return (
     <StyledCreateCard className="createCard d-flex flex-column p-3">
       <h3 className="text-center">New Project</h3>
