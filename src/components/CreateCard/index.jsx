@@ -4,17 +4,19 @@ import { useStateValue } from "../../context/StateProvider";
 import StyledCreateCard from "./styles";
 
 function CreateCard() {
-  const [{ todoCardItems }, dispatch] = useStateValue();
+  const [{ allCards }, dispatch] = useStateValue(); // eslint-disable-line
 
   const handleClick = () => {
     dispatch({
       type: "ADD_CARD_ITEMS",
-      item: {
+      cardItems: {
         id: uuidv4(),
-        todoCardItems,
+        title: "Click me to edit title",
+        todos: [],
       },
     });
   };
+  console.log("allCards", allCards);
   return (
     <StyledCreateCard className="createCard d-flex flex-column p-3">
       <h3 className="text-center">New Project</h3>

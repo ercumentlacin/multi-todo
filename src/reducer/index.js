@@ -1,14 +1,15 @@
-export const initialState = { todos: [], todoCardItems: [] };
+export const initialState = { todos: [], todoCardItems: [], allCards: [] };
 
-function reducer(state, action) {
+function reducer(state = initialState, action) {
   let index;
   let newTodos;
-  console.log(action);
+  console.log("action", action);
+  console.log("state", state);
   switch (action.type) {
     case "ADD_CARD_ITEMS":
       return {
         ...state,
-        todoCardItems: [...state.todoCardItems, action.item],
+        allCards: [...state.allCards, action.cardItems],
       };
     case "ADD_TODO":
       return {
