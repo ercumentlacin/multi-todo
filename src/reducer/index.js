@@ -10,7 +10,8 @@ function reducer(state = initialState, action) {
   let listIndex;
   let newTodos;
   let newAllCards;
-  console.log(state.allCards);
+  console.log("state", state);
+  console.log(action);
   switch (action.type) {
     case "ADD_CARD_ITEMS":
       return {
@@ -21,6 +22,11 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         todoList: [...state.todoList, action.todos],
+      };
+    case "ADD_CATEGORY":
+      return {
+        ...state,
+        todos: [...state.todos, action.todos],
       };
     case "DELETE_TODO":
       index = state.todoList.findIndex(

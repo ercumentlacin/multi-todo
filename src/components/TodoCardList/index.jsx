@@ -6,9 +6,10 @@ import StyledTodoCardList from "./styles";
 import CardHead from "../CardHead";
 import TodoAdd from "../TodoAdd";
 import TodoList from "../TodoList";
+import TodoAddCategory from "../TodoAddCategory";
 
 function TodoCardList() {
-  const [{ allCards, todoList }, dispatch] = useStateValue(); // eslint-disable-line
+  const [{ allCards, todoList, todos }, dispatch] = useStateValue(); // eslint-disable-line
 
   return (
     <>
@@ -31,6 +32,7 @@ function TodoCardList() {
               ) : null
             )}
           </div>
+          <TodoAddCategory id={id} />
         </StyledTodoCardList>
       ))}
     </>

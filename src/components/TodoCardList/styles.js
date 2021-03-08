@@ -7,6 +7,7 @@ const StyledTodoCardList = styled.div`
   border-radius: 0.2em;
   box-shadow: 0px 0px 3px 0px #c1c1c1;
   padding: 1rem;
+  overflow-y: overlay;
 `;
 
 export default StyledTodoCardList;
