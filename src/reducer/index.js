@@ -7,8 +7,10 @@ export const initialState = {
 
 function reducer(state = initialState, action) {
   let index;
+  let listIndex;
   let newTodos;
-
+  let newAllCards;
+  console.log(state.allCards);
   switch (action.type) {
     case "ADD_CARD_ITEMS":
       return {
@@ -36,6 +38,23 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         todoList: newTodos,
+      };
+    case "DELETE_LIST":
+      listIndex = state.allCards.findIndex(
+        (cardListItems) => cardListItems.id === action.id
+      );
+      newAllCards = [...state.allCards];
+
+      if (listIndex >= 0) {
+        newAllCards.splice(listIndex, 1);
+      } else {
+        console.warn(
+          `Cant remove product (id: ${action.id}) as its not in basket!`
+        );
+      }
+      return {
+        ...state,
+        allCards: newAllCards,
       };
     default:
       return state;

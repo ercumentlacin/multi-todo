@@ -26,6 +26,7 @@ function TodoCard({ id }) {
     <StyledTodoCard id={id} className="p-3">
       {/* todo head */}
       <h3 className="text-center">{todoHead}</h3>
+
       <Input
         value={todoHead}
         onChange={todoHeading}

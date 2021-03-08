@@ -12,6 +12,7 @@ const TodoStyle = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(18em, 18.5em));
     grid-gap: 1em;
+    transition: all 250ms ease-in-out;
   }
 `;
 
