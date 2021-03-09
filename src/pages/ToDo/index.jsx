@@ -1,19 +1,19 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
-
+import { useStateValue } from "../../context/StateProvider";
 import TodoStyle from "./styles";
+// components
 import Profile from "../../components/Profile";
 import Categorys from "../../components/Categorys";
 import CreateCard from "../../components/CreateCard";
-
 import TodoCardList from "../../components/TodoCardList";
-import { useStateValue } from "../../context/StateProvider";
 
 function ToDo() {
   const [{ todos }] = useStateValue();
+  // localStorage
   const name = localStorage.getItem("name");
   const lastname = localStorage.getItem("lastname");
-
+  // category filter and map for render
   const uniqCategorys = todos.filter(
     (value, index, array) =>
       !index || value.categoryName !== array[index - 1].categoryName
