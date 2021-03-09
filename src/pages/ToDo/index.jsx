@@ -13,13 +13,11 @@ function ToDo() {
   const [{ todos }] = useStateValue();
   const name = localStorage.getItem("name");
   const lastname = localStorage.getItem("lastname");
-  console.log("todos", todos);
 
   const uniqCategorys = todos.filter(
     (value, index, array) =>
       !index || value.categoryName !== array[index - 1].categoryName
   );
-  console.log("uniqCategorys", uniqCategorys);
   const categoryItems = uniqCategorys.map(({ categoryName }) => (
     <Categorys key={uuidv4()} categoryName={categoryName} />
   ));

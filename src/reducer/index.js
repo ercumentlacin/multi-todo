@@ -10,7 +10,8 @@ function reducer(state = initialState, action) {
   let listIndex;
   let newTodos;
   let newAllCards;
-  console.log("state", state);
+  console.log("allCards", state.allCards);
+  console.log("todos", state.todos);
   console.log(action);
   switch (action.type) {
     case "ADD_CARD_ITEMS":

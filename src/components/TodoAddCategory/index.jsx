@@ -9,7 +9,6 @@ function TodoAddCategory({ id }) {
   const [categoryName, setCategoryName] = useState("add category");
 
   function handleCategoryChnage(e) {
-    console.log(e);
     setCategoryName(e.target.value);
   }
 

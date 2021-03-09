@@ -4,18 +4,21 @@ import { useStateValue } from "../../context/StateProvider";
 import StyledCreateCard from "./styles";
 
 function CreateCard() {
-  const [{ allCards }, dispatch] = useStateValue(); // eslint-disable-line
+  const [{ allCards, todos }, dispatch] = useStateValue(); // eslint-disable-line
 
   const handleClick = () => {
+    const id = uuidv4();
     dispatch({
       type: "ADD_CARD_ITEMS",
       cardItems: {
-        id: uuidv4(),
+        id,
         title: "Click me to edit title",
-        todos: [],
+        todos: todos.filter((item) => (item.categoryId === id ? item : "")),
+        deneme: todos,
       },
     });
   };
+  console.log({ todos });
   return (
     <StyledCreateCard className="createCard d-flex flex-column p-3">
       <h3 className="text-center">New Project</h3>
