@@ -11,7 +11,7 @@ function CardHead({ id, title }) {
       setCardTitle(e.target.value);
     }
   }
-
+  // remove card function
   const handleDeleteCard = () => {
     dispatch({
       type: "DELETE_LIST",
@@ -22,7 +22,6 @@ function CardHead({ id, title }) {
   return (
     <CardHeadForm onSubmit={(e) => e.preventDefault()}>
       <input id={id} onChange={cardTitleChnage} type="text" value={cardTitle} />
-
       <i
         onClick={handleDeleteCard}
         className="fa fa-trash"

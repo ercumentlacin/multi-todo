@@ -9,11 +9,9 @@ function FullNameForm() {
   const history = useHistory();
 
   const handleChnageName = (e) => {
-    e.preventDefault();
     setName(e.target.value);
   };
   const handleChnageLastName = (e) => {
-    e.preventDefault();
     setLastname(e.target.value);
   };
   const handleSubmit = (e) => {
