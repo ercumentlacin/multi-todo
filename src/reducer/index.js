@@ -10,9 +10,6 @@ function reducer(state = initialState, action) {
   let listIndex;
   let newTodos;
   let newAllCards;
-  console.log("allCards", state.allCards);
-  console.log("todos", state.todos);
-  console.log(action);
   switch (action.type) {
     case "ADD_CARD_ITEMS":
       return {
@@ -55,9 +52,7 @@ function reducer(state = initialState, action) {
       if (listIndex >= 0) {
         newAllCards.splice(listIndex, 1);
       } else {
-        console.warn(
-          `Cant remove product (id: ${action.id}) as its not in basket!`
-        );
+        console.warn(`Cant remove card (id: ${action.id}) as its not in list!`);
       }
       return {
         ...state,
