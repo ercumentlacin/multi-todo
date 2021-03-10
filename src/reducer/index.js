@@ -6,10 +6,10 @@ export const initialState = {
 };
 
 function reducer(state = initialState, action) {
-  let index;
-  let listIndex;
-  let newTodos;
-  let newAllCards;
+  let index; // ->> the index of the todo be deleted
+  let listIndex; // ->> the index of the list be deleted
+  let newTodos; // ->> new list created after the todo was deleted
+  let newAllCards; // ->> new list created after the list was deleted
   switch (action.type) {
     case "ADD_CARD_ITEMS":
       return {
